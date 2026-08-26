@@ -1,0 +1,26 @@
+import { calculateSplits } from '../frontend/src/lib/splits.js'
+import { saveToLedger } from '../db/ledger.js'
+
+// This runs when new revenue comes in
+export async function processRevenue(newAmount, companyWallet) {
+  
+  // 1. Split the NEW money only
+  const split = calculateSplits(newAmount)
+  
+  // 2. Send to wallets. Company/People/HUB/WORLD
+  await sendToWallet(companyWallet, split.company) // This goes to THEIR savings
+  await sendToWallet("PEOPLE_POOL", split.people)
+  await sendToWallet("HUB_POOL", split.hub) 
+  await sendToWallet("WORLD_POOL", split.world)
+  
+  // 3. Log it. Public.
+  await saveToLedger({ ...split, type: "CIRCULATION" })
+  
+  console.log(`Circulated: $${newAmount}`)
+  return split
+}
+
+async function sendToWallet(wallet, amount) {
+  // Connect your Stripe/bank here
+  console.log(`Sent $${amount} to ${wallet}`)
+}
