@@ -1,0 +1,158 @@
+.dashboard {
+  padding: 40px 0;
+  min-height: calc(100vh - 60px);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  font-size: 36px;
+}
+
+.dashboard-subtitle {
+  color: #667eea;
+  margin-top: 8px;
+}
+
+.dashboard-stats {
+  display: flex;
+  gap: 32px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.stat-label {
+  color: #b0b0b0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  color: #667eea;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.dashboard-nav {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  padding-bottom: 16px;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  color: #b0b0b0;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.tab:hover {
+  color: #667eea;
+}
+
+.tab.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+}
+
+.dashboard-content {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.audit-log {
+  background: rgba(102, 126, 234, 0.08);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.audit-log h3 {
+  margin-bottom: 8px;
+}
+
+.audit-description {
+  color: #b0b0b0;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.log-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.log-entry {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  gap: 16px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 2px solid #667eea;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.log-time {
+  color: #667eea;
+  font-weight: 500;
+  font-family: monospace;
+}
+
+.log-action {
+  color: #e0e0e0;
+}
+
+.log-user {
+  color: #b0b0b0;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+  }
+
+  .dashboard-stats {
+    margin-top: 16px;
+    gap: 16px;
+  }
+
+  .log-entry {
+    grid-template-columns: 1fr;
+  }
+
+  .log-user {
+    text-align: left;
+  }
+}
